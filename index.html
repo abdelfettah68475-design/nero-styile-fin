@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NERO Stiyle — Boutique</title>
+  <meta name="description" content="NERO Stiyle — Hoodies, pantalons et pulls. Livraison gratuite partout au Maroc. Commande via WhatsApp." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg:#07070a;
+      --panel:#0f1016;
+      --text:#e9e9ee;
+      --muted:#a9acb8;
+      --silver:#cfd2dc;
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 30px 80px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, #050508, #0b0b10 60%, #07070a);
+      overflow-x:hidden;
+    }
+
+    .grain{
+      pointer-events:none;
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.07;
+      animation: grainMove 8s steps(10) infinite;
+      z-index:0;
+    }
+    @keyframes grainMove{
+      0%{transform:translate(0,0)}
+      25%{transform:translate(-2%, 2%)}
+      50%{transform:translate(-1%, -2%)}
+      75%{transform:translate(2%, 1%)}
+      100%{transform:translate(0,0)}
+    }
+
+    .navbar{
+      background:rgba(5,5,8,.55);
+      border-bottom:1px solid var(--line);
+      backdrop-filter: blur(12px);
+      z-index:10;
+    }
+    .brand{
+      font-family:Cinzel, serif;
+      letter-spacing:.12em;
+      font-weight:700;
+      text-transform:uppercase;
+      display:flex; align-items:center; gap:.6rem;
+    }
+    .brand img{
+      width:36px; height:36px; object-fit:contain;
+      filter: drop-shadow(0 10px 25px rgba(255,255,255,.08));
+    }
+    .nav-link{color:var(--silver) !important; opacity:.9}
+    .nav-link:hover{color:#fff !important; opacity:1}
+
+    .btn-ghost{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      color:#fff;
+      padding:.6rem 1rem;
+      border-radius:14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      transition: transform .2s ease, border-color .2s ease;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn-ghost:hover{transform:translateY(-2px); border-color:rgba(255,255,255,.22)}
+
+    .btn-accent{
+      border:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+      color:#fff;
+      padding:.65rem 1.05rem;
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, filter .2s ease;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn-accent:hover{transform:translateY(-2px); filter:brightness(1.07)}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:.55rem;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      padding:.35rem .8rem;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .hero{position:relative; padding: 6.8rem 0 2.6rem; z-index:2;}
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 400px at 20% 20%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(900px 500px at 80% 30%, rgba(255,255,255,.08), transparent 60%);
+      pointer-events:none;
+    }
+    .title{
+      font-family:Cinzel, serif;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      line-height:1.05;
+      font-weight:700;
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin: .85rem 0 1rem;
+    }
+    .subtitle{color:var(--muted); font-size: clamp(1rem, 1.4vw, 1.12rem); max-width: 62ch;}
+
+    section{padding: 58px 0; position:relative; z-index:2;}
+    .section-title{
+      font-family:Cinzel, serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:700;
+      font-size:1.55rem;
+      margin:0 0 10px;
+    }
+    .section-sub{color:var(--muted); max-width: 80ch;}
+
+    .p-card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, border-color .2s ease;
+      height:100%;
+    }
+    .p-card:hover{transform:translateY(-3px); border-color:rgba(255,255,255,.20)}
+    .p-img{width:100%; height:260px; object-fit:cover; filter:contrast(1.05) saturate(1.05)}
+    .p-body{padding:16px}
+    .tag{
+      display:inline-flex;gap:8px;align-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.05);
+      padding:.28rem .7rem;border-radius:999px;
+      color:rgba(255,255,255,.78);
+      font-size:.85rem
+    }
+    .price{font-weight:800; letter-spacing:.02em}
+    .muted{color:var(--muted)}
+    .btn-mini{
+      border:1px solid rgba(255,255,255,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      color:#fff;
+      border-radius:14px;
+      padding:.55rem .85rem;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+      transition: transform .2s ease, filter .2s ease;
+      font-weight:600;
+      font-size:.95rem;
+    }
+    .btn-mini:hover{transform:translateY(-2px); filter:brightness(1.06)}
+    .btn-mini.secondary{background: transparent; border:1px solid var(--line);}
+
+    .size-row{
+      display:flex; align-items:center; gap:10px;
+      margin: 10px 0 12px;
+    }
+    .size-row label{
+      color: var(--muted);
+      font-size:.92rem;
+      margin:0;
+      white-space:nowrap;
+    }
+    .size-select{
+      flex:1;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: #fff;
+      padding: .52rem .75rem;
+      outline: none;
+    }
+    .size-select option{color:#000}
+
+    .reveal{opacity:0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease;}
+    .reveal.show{opacity:1; transform: translateY(0);}
+
+    .cart-backdrop{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.65);
+      backdrop-filter: blur(6px);
+      opacity:0; pointer-events:none;
+      transition: opacity .2s ease;
+      z-index:9998;
+    }
+    .cart-backdrop.show{opacity:1; pointer-events:auto;}
+
+    .cart{
+      position:fixed;
+      top:0; right:-420px;
+      width: 420px; max-width: 92vw; height: 100vh;
+      background: linear-gradient(180deg, rgba(20,20,28,.95), rgba(10,10,14,.95));
+      border-left:1px solid rgba(255,255,255,.12);
+      box-shadow: -30px 0 80px rgba(0,0,0,.55);
+      transition: right .25s ease;
+      z-index:9999;
+      display:flex;
+      flex-direction:column;
+    }
+    .cart.show{right:0}
+    .cart-header{
+      padding:16px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .cart-title{
+      font-family:Cinzel,serif;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:700;
+      margin:0;
+      font-size:1.05rem;
+    }
+    .cart-body{padding:14px; overflow:auto; flex:1}
+    .cart-item{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius:18px;
+      padding:10px;
+      display:flex; gap:10px;
+      margin-bottom:10px;
+    }
+    .cart-item img{width:74px; height:74px; object-fit:cover; border-radius:14px; border:1px solid rgba(255,255,255,.10)}
+    .cart-item h6{margin:0 0 2px; font-size:.98rem}
+    .qty{display:flex; align-items:center; gap:8px; margin-top:6px;}
+    .qty button{
+      width:30px;height:30px;border-radius:10px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:#fff;
+    }
+    .qty span{min-width:22px; text-align:center; font-weight:700}
+    .remove{border:none; background:transparent; color: rgba(255,255,255,.65); margin-left:auto;}
+    .remove:hover{color:#fff}
+
+    .cart-footer{border-top:1px solid rgba(255,255,255,.10); padding:14px;}
+    .total-line{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; color: var(--silver); font-weight:700;}
+    .note{color: var(--muted); font-size:.92rem; margin-bottom:12px;}
+
+    .wa-float{position:fixed; right:18px; bottom:18px; z-index:9000;}
+    .wa-float a{
+      display:flex; align-items:center; gap:10px;
+      padding: 12px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      box-shadow: 0 25px 70px rgba(0,0,0,.45);
+      backdrop-filter: blur(10px);
+      transition: transform .2s ease;
+      font-weight:700;
+    }
+    .wa-float a:hover{transform: translateY(-2px)}
+    .wa-float i{font-size: 1.15rem}
+
+    footer{
+      border-top:1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      padding: 26px 0;
+      color:var(--muted);
+      position:relative; z-index:2;
+    }
+
+    .count-badge{
+      display:inline-grid;
+      place-items:center;
+      min-width:20px; height:20px;
+      padding:0 6px;
+      border-radius:999px;
+      background: rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:.78rem;
+      font-weight:800;
+      margin-left:8px;
+    }
+
+    @media (max-width: 991px){
+      .p-img{height:240px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <script>
+    const PHONE_INTL = "212783849122";
+    const INSTAGRAM_URL = "https://www.instagram.com/niro_stiyle07?igsh=Yjh3bXRsejFzMXBm";
+  </script>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand brand" href="#top">
+        <img src="assets/logo-nero.jpg" alt="NERO Stiyle Logo">
+        NERO <span style="opacity:.85;font-weight:500;letter-spacing:.18em">Stiyle</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#produits">Produits</a></li>
+          <li class="nav-item"><a class="nav-link" href="#livraison">Livraison</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="instaLink"><i class="fa-brands fa-instagram me-2"></i>Instagram</a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-ghost" href="#" id="openCartBtn">
+              <i class="fa-solid fa-bag-shopping"></i>
+              Panier
+              <span class="count-badge" id="cartCount">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+          <span class="pill reveal"><i class="fa-solid fa-truck-fast"></i> Livraison gratuite partout au Maroc</span>
+          <h1 class="title reveal" style="transition-delay:.06s">NERO STIYLE</h1>
+          <p class="subtitle reveal" style="transition-delay:.12s">
+            Boutique streetwear : Hoodies, pantalons et pulls. Sélection premium, visuels forts,
+            commande simple et rapide via WhatsApp.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 mt-4 reveal" style="transition-delay:.18s">
+            <a class="btn-accent" href="#produits"><i class="fa-solid fa-star"></i>Voir les produits</a>
+            <a class="btn-ghost" href="#" id="heroWhats"><i class="fa-brands fa-whatsapp"></i>Commander maintenant</a>
+          </div>
+
+          <div class="mt-3 reveal" style="transition-delay:.22s">
+            <div class="muted" style="font-size:.95rem">
+              Prix : Hoodies <b>249 DH</b> • Pantalons <b>149 DH</b> • Pulls <b>149 DH</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="p-card reveal" style="transition-delay:.10s">
+            <img class="p-img" src="assets/hoodie-nero-back.jpg" alt="Hoodie NERO Maroc">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-fire"></i> Drop Maroc</span>
+                <span class="price">249 DH</span>
+              </div>
+              <h5 class="mb-1">Hoodie “NERO Maroc”</h5>
+              <div class="muted">Livraison gratuite • Commande via WhatsApp • Stock limité</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- PRODUITS -->
+  <section id="produits">
+    <div class="container">
+      <div class="row align-items-end g-3 mb-4">
+        <div class="col-lg-7">
+          <h2 class="section-title reveal">Produits</h2>
+          <p class="section-sub reveal" style="transition-delay:.08s">
+            Choisis la taille, ajoute au panier, puis clique “Commander sur WhatsApp”.
+            Le message WhatsApp contiendra la liste des articles + tailles + quantités + total.
+          </p>
+        </div>
+        <div class="col-lg-5 text-lg-end reveal" style="transition-delay:.12s">
+          <a class="btn-ghost" href="#" id="checkoutBtnTop"><i class="fa-brands fa-whatsapp"></i>Commander sur WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Hoodies — 249 DH</h3>
+            <div class="muted reveal" style="transition-delay:.06s">Livraison gratuite</div>
+          </div>
+          <hr style="border-color: rgba(255,255,255,.10)" class="reveal">
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal">
+            <img class="p-img" id="neroSwapImg" src="assets/hoodie-nero-back.jpg" alt="Hoodie NERO Maroc">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-bolt"></i> 2 vues</span>
+                <span class="price">249 DH</span>
+              </div>
+              <h5 class="mb-1">Hoodie “NERO Maroc”</h5>
+              <div class="muted">Noir • Visuel lion • Style Maroc</div>
+
+              <div class="size-row">
+                <label for="size-nero">Taille</label>
+                <select class="size-select" id="size-nero">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn-mini secondary" id="swapViewBtn" type="button">
+                  <i class="fa-solid fa-repeat"></i>Changer vue
+                </button>
+                <button class="btn-mini" type="button"
+                        onclick="addToCartWithSize('Hoodie “NERO Maroc”', 249, 'assets/hoodie-nero-back.jpg', 'size-nero')">
+                  <i class="fa-solid fa-cart-plus"></i>Ajouter
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal" style="transition-delay:.06s">
+            <img class="p-img" src="assets/lferda-hoodie.jpg" alt="Hoodie Lferda">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-star"></i> Populaire</span>
+                <span class="price">249 DH</span>
+              </div>
+              <h5 class="mb-1">Hoodie “Lferda”</h5>
+              <div class="muted">Noir • Design urbain • Confort premium</div>
+
+              <div class="size-row">
+                <label for="size-lferda">Taille</label>
+                <select class="size-select" id="size-lferda">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Hoodie “Lferda”', 249, 'assets/lferda-hoodie.jpg', 'size-lferda')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal" style="transition-delay:.12s">
+            <img class="p-img" src="assets/salgoat-hoodie.jpg" alt="Hoodie SALGOAT">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-fire"></i> New</span>
+                <span class="price">249 DH</span>
+              </div>
+              <h5 class="mb-1">Hoodie “SALGOAT”</h5>
+              <div class="muted">Blanc • Visuel fort • Style street</div>
+
+              <div class="size-row">
+                <label for="size-salgoat">Taille</label>
+                <select class="size-select" id="size-salgoat">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Hoodie “SALGOAT”', 249, 'assets/salgoat-hoodie.jpg', 'size-salgoat')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mt-3">
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Pantalons — 149 DH</h3>
+            <div class="muted reveal" style="transition-delay:.06s">Livraison gratuite</div>
+          </div>
+          <hr style="border-color: rgba(255,255,255,.10)" class="reveal">
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal">
+            <img class="p-img" src="assets/pantalon-bleu.jpg" alt="Pantalon Bleu">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-tag"></i> Best value</span>
+                <span class="price">149 DH</span>
+              </div>
+              <h5 class="mb-1">Pantalon “Bleu”</h5>
+              <div class="muted">Confort • Coupe moderne</div>
+
+              <div class="size-row">
+                <label for="size-pbleu">Taille</label>
+                <select class="size-select" id="size-pbleu">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Pantalon “Bleu”', 149, 'assets/pantalon-bleu.jpg', 'size-pbleu')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal" style="transition-delay:.06s">
+            <img class="p-img" src="assets/pantalon-gris.jpg" alt="Pantalon Gris">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-check"></i> Classic</span>
+                <span class="price">149 DH</span>
+              </div>
+              <h5 class="mb-1">Pantalon “Gris”</h5>
+              <div class="muted">Gris chiné • Style clean</div>
+
+              <div class="size-row">
+                <label for="size-pgris">Taille</label>
+                <select class="size-select" id="size-pgris">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Pantalon “Gris”', 149, 'assets/pantalon-gris.jpg', 'size-pgris')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal" style="transition-delay:.12s">
+            <img class="p-img" src="assets/pantalon-bleu-nuit.jpg" alt="Pantalon Bleu Nuit">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-moon"></i> Bleu nuit</span>
+                <span class="price">149 DH</span>
+              </div>
+              <h5 class="mb-1">Pantalon “Bleu Nuit”</h5>
+              <div class="muted">Couleur premium • Confort</div>
+
+              <div class="size-row">
+                <label for="size-pnuit">Taille</label>
+                <select class="size-select" id="size-pnuit">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Pantalon “Bleu Nuit”', 149, 'assets/pantalon-bleu-nuit.jpg', 'size-pnuit')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mt-3">
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Pulls — 149 DH</h3>
+            <div class="muted reveal" style="transition-delay:.06s">Livraison gratuite</div>
+          </div>
+          <hr style="border-color: rgba(255,255,255,.10)" class="reveal">
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal">
+            <img class="p-img" src="assets/dimen-tshirt.jpg" alt="Pull Dimension">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-layer-group"></i> Dimension</span>
+                <span class="price">149 DH</span>
+              </div>
+              <h5 class="mb-1">Pull “Dimension”</h5>
+              <div class="muted">Noir • Design rouge • Impression dos</div>
+
+              <div class="size-row">
+                <label for="size-dimen">Taille</label>
+                <select class="size-select" id="size-dimen">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Pull “Dimension”', 149, 'assets/dimen-tshirt.jpg', 'size-dimen')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-4 reveal">
+        <a class="btn-accent" href="#" id="checkoutBtnBottom"><i class="fa-brands fa-whatsapp"></i>Commander sur WhatsApp</a>
+        <span class="muted ms-2">Panier → WhatsApp (commande rapide)</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="livraison">
+    <div class="container">
+      <div class="row g-3 align-items-stretch">
+        <div class="col-lg-7">
+          <div class="p-card reveal" style="padding:20px;">
+            <h3 class="section-title mb-2">Livraison gratuite</h3>
+            <p class="section-sub mb-0">
+              Livraison gratuite à tout le Maroc. Après commande, envoie :
+              <b>Nom</b>, <b>Ville</b>, <b>Adresse</b> et <b>Téléphone</b>.
+              Nous confirmons la disponibilité et l’expédition.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="p-card reveal" style="padding:20px; transition-delay:.08s">
+            <h3 class="section-title mb-2">Réseaux</h3>
+            <div class="d-flex flex-column gap-2">
+              <a class="btn-ghost" href="#" id="instaBtn2"><i class="fa-brands fa-instagram"></i>Instagram</a>
+              <a class="btn-accent" href="#" id="whatsBtn2"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+            </div>
+            <div class="muted mt-3" style="font-size:.95rem">
+              Astuce : le client choisit la taille, puis “Commander sur WhatsApp” envoie tout automatiquement.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container d-flex flex-column flex-lg-row justify-content-between gap-2">
+      <div><b>NERO Stiyle</b> — Boutique</div>
+      <div>© <span id="year"></span> — Livraison gratuite partout au Maroc</div>
+    </div>
+  </footer>
+
+  <div class="wa-float">
+    <a href="#" id="floatWhats"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
+  </div>
+
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+  <aside class="cart" id="cartDrawer" aria-label="Panier">
+    <div class="cart-header">
+      <h4 class="cart-title">Panier</h4>
+      <button class="btn btn-sm btn-outline-light" id="closeCartBtn" type="button" style="border-radius:12px;">Fermer</button>
+    </div>
+
+    <div class="cart-body" id="cartItems">
+      <div class="muted">Ton panier est vide. Ajoute des produits.</div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="note"><i class="fa-solid fa-truck-fast me-2"></i>Livraison gratuite — Maroc</div>
+      <div class="total-line"><span>Total</span><span id="cartTotal">0 DH</span></div>
+      <button class="btn-accent w-100 justify-content-center" type="button" id="checkoutBtn">
+        <i class="fa-brands fa-whatsapp"></i> Commander sur WhatsApp
+      </button>
+      <button class="btn-ghost w-100 justify-content-center mt-2" type="button" id="clearCartBtn">
+        <i class="fa-solid fa-trash"></i> Vider le panier
+      </button>
+      <div class="muted mt-2" style="font-size:.9rem">Le message WhatsApp inclura produits + tailles + total.</div>
+    </div>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const instaEls = ["instaLink","instaBtn2"].map(id=>document.getElementById(id));
+    instaEls.forEach(el=>{
+      if(!el) return;
+      el.href = INSTAGRAM_URL;
+      el.target = "_blank";
+      el.rel = "noopener";
+    });
+
+    function waLink(text){
+      const msg = encodeURIComponent(text);
+      return `https://wa.me/${PHONE_INTL}?text=${msg}`;
+    }
+
+    const heroWhats = document.getElementById("heroWhats");
+    const floatWhats = document.getElementById("floatWhats");
+    const whatsBtn2  = document.getElementById("whatsBtn2");
+
+    const defaultText = "Bonjour NERO Stiyle, je veux commander. Livraison gratuite au Maroc.";
+    [heroWhats, floatWhats, whatsBtn2].forEach(el=>{
+      if(!el) return;
+      el.href = waLink(defaultText);
+      el.target = "_blank";
+      el.rel = "noopener";
+    });
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("show"); });
+    }, {threshold: 0.12});
+    document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
+
+    const swapBtn = document.getElementById("swapViewBtn");
+    const swapImg = document.getElementById("neroSwapImg");
+    let viewState = "back";
+    if(swapBtn && swapImg){
+      swapBtn.addEventListener("click", ()=>{
+        viewState = (viewState === "back") ? "front" : "back";
+        swapImg.src = (viewState === "back") ? "assets/hoodie-nero-back.jpg" : "assets/hoodie-nero-front.jpg";
+      });
+    }
+
+    const cartBackdrop = document.getElementById("cartBackdrop");
+    const cartDrawer = document.getElementById("cartDrawer");
+    const openCartBtn = document.getElementById("openCartBtn");
+    const closeCartBtn = document.getElementById("closeCartBtn");
+    const cartItemsEl = document.getElementById("cartItems");
+    const cartTotalEl = document.getElementById("cartTotal");
+    const cartCountEl = document.getElementById("cartCount");
+    const checkoutBtn = document.getElementById("checkoutBtn");
+    const clearCartBtn = document.getElementById("clearCartBtn");
+    const checkoutBtnTop = document.getElementById("checkoutBtnTop");
+    const checkoutBtnBottom = document.getElementById("checkoutBtnBottom");
+
+    let cart = JSON.parse(localStorage.getItem("nero_cart") || "[]");
+
+    function saveCart(){ localStorage.setItem("nero_cart", JSON.stringify(cart)); }
+    function money(n){ return `${n} DH`; }
+    function cartCount(){ return cart.reduce((sum,i)=> sum + i.qty, 0); }
+    function cartTotal(){ return cart.reduce((sum,i)=> sum + (i.price * i.qty), 0); }
+
+    function openCart(){
+      cartDrawer.classList.add("show");
+      cartBackdrop.classList.add("show");
+      renderCart();
+    }
+    function closeCart(){
+      cartDrawer.classList.remove("show");
+      cartBackdrop.classList.remove("show");
+    }
+
+    if(openCartBtn) openCartBtn.addEventListener("click", (e)=>{e.preventDefault(); openCart();});
+    if(closeCartBtn) closeCartBtn.addEventListener("click", closeCart);
+    if(cartBackdrop) cartBackdrop.addEventListener("click", closeCart);
+
+    function getSelectedSize(selectId){
+      const el = document.getElementById(selectId);
+      if(!el) return "M";
+      return el.value || "M";
+    }
+
+    function addToCartWithSize(name, price, img, sizeSelectId){
+      const size = getSelectedSize(sizeSelectId);
+      const key = `${name}||${size}`;
+
+      const found = cart.find(i=> i.key === key);
+      if(found) found.qty += 1;
+      else cart.push({ key, name, size, price, img, qty:1 });
+
+      saveCart();
+      updateCartUI();
+      openCart();
+    }
+    window.addToCartWithSize = addToCartWithSize;
+
+    function incItem(key){
+      const it = cart.find(i=> i.key === key);
+      if(it){ it.qty += 1; saveCart(); renderCart(); updateCartUI(); }
+    }
+    function decItem(key){
+      const it = cart.find(i=> i.key === key);
+      if(!it) return;
+      it.qty -= 1;
+      if(it.qty <= 0) cart = cart.filter(i=> i.key !== key);
+      saveCart(); renderCart(); updateCartUI();
+    }
+    function removeItem(key){
+      cart = cart.filter(i=> i.key !== key);
+      saveCart(); renderCart(); updateCartUI();
+    }
+    function clearCart(){
+      cart = [];
+      saveCart(); renderCart(); updateCartUI();
+    }
+
+    function esc(s){
+      return String(s).replace(/'/g, "\\'");
+    }
+
+    function renderCart(){
+      cartCountEl.textContent = cartCount();
+      cartTotalEl.textContent = money(cartTotal());
+
+      if(cart.length === 0){
+        cartItemsEl.innerHTML = `<div class="muted">Ton panier est vide. Ajoute des produits.</div>`;
+        return;
+      }
+
+      cartItemsEl.innerHTML = cart.map(item=>`
+        <div class="cart-item">
+          <img src="${item.img}" alt="${item.name}">
+          <div style="flex:1">
+            <h6>${item.name}</h6>
+            <div class="muted" style="font-size:.92rem">
+              Taille: <b>${item.size}</b> • ${money(item.price)} • Livraison gratuite
+            </div>
+            <div class="qty">
+              <button type="button" onclick="decItem('${esc(item.key)}')">-</button>
+              <span>${item.qty}</span>
+              <button type="button" onclick="incItem('${esc(item.key)}')">+</button>
+              <button class="remove" type="button" title="Supprimer" onclick="removeItem('${esc(item.key)}')">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateCartUI(){
+      cartCountEl.textContent = cartCount();
+      cartTotalEl.textContent = money(cartTotal());
+    }
+
+    function buildOrderMessage(){
+      if(cart.length === 0) return defaultText;
+
+      const lines = [];
+      lines.push("Bonjour NERO Stiyle, je veux commander :");
+      lines.push("");
+      cart.forEach((i, idx)=>{
+        lines.push(`${idx+1}) ${i.name} — Taille: ${i.size} — ${i.qty} x ${i.price} DH = ${i.qty*i.price} DH`);
+      });
+      lines.push("");
+      lines.push(`Total: ${cartTotal()} DH`);
+      lines.push("Livraison: GRATUITE (tout le Maroc)");
+      lines.push("");
+      lines.push("Merci de confirmer la disponibilité.");
+      lines.push("Je vous envoie: Nom / Ville / Adresse / Téléphone.");
+      return lines.join("\n");
+    }
+
+    function checkoutWhatsApp(){
+      window.open(waLink(buildOrderMessage()), "_blank", "noopener");
+    }
+
+    if(checkoutBtn) checkoutBtn.addEventListener("click", checkoutWhatsApp);
+    if(checkoutBtnTop) checkoutBtnTop.addEventListener("click", (e)=>{e.preventDefault(); checkoutWhatsApp();});
+    if(checkoutBtnBottom) checkoutBtnBottom.addEventListener("click", (e)=>{e.preventDefault(); checkoutWhatsApp();});
+    if(clearCartBtn) clearCartBtn.addEventListener("click", clearCart);
+
+    window.incItem = incItem;
+    window.decItem = decItem;
+    window.removeItem = removeItem;
+
+    updateCartUI();
+  </script>
+</body>
+</html>
