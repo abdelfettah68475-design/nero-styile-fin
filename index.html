@@ -312,6 +312,12 @@
   <script>
     const PHONE_INTL = "212783849122";
     const INSTAGRAM_URL = "https://www.instagram.com/niro_stiyle07?igsh=Yjh3bXRsejFzMXBm";
+
+    // PRIX (modifie ici si besoin)
+    const PRICE_HOODIE = 249;
+    const PRICE_PANTALON = 149;
+    const PRICE_PULL = 149;
+    const PRICE_SURVETTE = 299; // <- change si tu veux
   </script>
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -351,7 +357,7 @@
           <span class="pill reveal"><i class="fa-solid fa-truck-fast"></i> Livraison gratuite partout au Maroc</span>
           <h1 class="title reveal" style="transition-delay:.06s">NERO STIYLE</h1>
           <p class="subtitle reveal" style="transition-delay:.12s">
-            Boutique streetwear : Hoodies, pantalons et pulls. Sélection premium, visuels forts,
+            Boutique streetwear : Hoodies, pantalons, pulls et survettes. Sélection premium, visuels forts,
             commande simple et rapide via WhatsApp.
           </p>
 
@@ -362,7 +368,7 @@
 
           <div class="mt-3 reveal" style="transition-delay:.22s">
             <div class="muted" style="font-size:.95rem">
-              Prix : Hoodies <b>249 DH</b> • Pantalons <b>149 DH</b> • Pulls <b>149 DH</b>
+              Prix : Hoodies <b><span id="pH"></span> DH</b> • Pantalons <b><span id="pP"></span> DH</b> • Pulls <b><span id="pPu"></span> DH</b> • Survettes <b><span id="pS"></span> DH</b>
             </div>
           </div>
         </div>
@@ -373,7 +379,7 @@
             <div class="p-body">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="tag"><i class="fa-solid fa-fire"></i> Drop Maroc</span>
-                <span class="price">249 DH</span>
+                <span class="price"><span id="pH2"></span> DH</span>
               </div>
               <h5 class="mb-1">Hoodie “NERO Maroc”</h5>
               <div class="muted">Livraison gratuite • Commande via WhatsApp • Stock limité</div>
@@ -404,7 +410,7 @@
       <div class="row g-3">
         <div class="col-12">
           <div class="d-flex align-items-center justify-content-between">
-            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Hoodies — 249 DH</h3>
+            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Hoodies — <span id="pH3"></span> DH</h3>
             <div class="muted reveal" style="transition-delay:.06s">Livraison gratuite</div>
           </div>
           <hr style="border-color: rgba(255,255,255,.10)" class="reveal">
@@ -416,7 +422,7 @@
             <div class="p-body">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="tag"><i class="fa-solid fa-bolt"></i> 2 vues</span>
-                <span class="price">249 DH</span>
+                <span class="price"><span id="pH4"></span> DH</span>
               </div>
               <h5 class="mb-1">Hoodie “NERO Maroc”</h5>
               <div class="muted">Noir • Visuel lion • Style Maroc</div>
@@ -436,7 +442,7 @@
                   <i class="fa-solid fa-repeat"></i>Changer vue
                 </button>
                 <button class="btn-mini" type="button"
-                        onclick="addToCartWithSize('Hoodie “NERO Maroc”', 249, 'assets/hoodie-nero-back.jpg', 'size-nero')">
+                        onclick="addToCartWithSize('Hoodie “NERO Maroc”', PRICE_HOODIE, 'assets/hoodie-nero-back.jpg', 'size-nero')">
                   <i class="fa-solid fa-cart-plus"></i>Ajouter
                 </button>
               </div>
@@ -450,7 +456,7 @@
             <div class="p-body">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="tag"><i class="fa-solid fa-star"></i> Populaire</span>
-                <span class="price">249 DH</span>
+                <span class="price"><span id="pH5"></span> DH</span>
               </div>
               <h5 class="mb-1">Hoodie “Lferda”</h5>
               <div class="muted">Noir • Design urbain • Confort premium</div>
@@ -466,7 +472,7 @@
               </div>
 
               <button class="btn-mini" type="button"
-                      onclick="addToCartWithSize('Hoodie “Lferda”', 249, 'assets/lferda-hoodie.jpg', 'size-lferda')">
+                      onclick="addToCartWithSize('Hoodie “Lferda”', PRICE_HOODIE, 'assets/lferda-hoodie.jpg', 'size-lferda')">
                 <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
               </button>
             </div>
@@ -479,7 +485,7 @@
             <div class="p-body">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="tag"><i class="fa-solid fa-fire"></i> New</span>
-                <span class="price">249 DH</span>
+                <span class="price"><span id="pH6"></span> DH</span>
               </div>
               <h5 class="mb-1">Hoodie “SALGOAT”</h5>
               <div class="muted">Blanc • Visuel fort • Style street</div>
@@ -495,16 +501,17 @@
               </div>
 
               <button class="btn-mini" type="button"
-                      onclick="addToCartWithSize('Hoodie “SALGOAT”', 249, 'assets/salgoat-hoodie.jpg', 'size-salgoat')">
+                      onclick="addToCartWithSize('Hoodie “SALGOAT”', PRICE_HOODIE, 'assets/salgoat-hoodie.jpg', 'size-salgoat')">
                 <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
+        <!-- PANTALONS -->
         <div class="col-12 mt-3">
           <div class="d-flex align-items-center justify-content-between">
-            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Pantalons — 149 DH</h3>
+            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Pantalons — <span id="pP2"></span> DH</h3>
             <div class="muted reveal" style="transition-delay:.06s">Livraison gratuite</div>
           </div>
           <hr style="border-color: rgba(255,255,255,.10)" class="reveal">
@@ -516,7 +523,7 @@
             <div class="p-body">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="tag"><i class="fa-solid fa-tag"></i> Best value</span>
-                <span class="price">149 DH</span>
+                <span class="price"><span id="pP3"></span> DH</span>
               </div>
               <h5 class="mb-1">Pantalon “Bleu”</h5>
               <div class="muted">Confort • Coupe moderne</div>
@@ -532,20 +539,21 @@
               </div>
 
               <button class="btn-mini" type="button"
-                      onclick="addToCartWithSize('Pantalon “Bleu”', 149, 'assets/pantalon-bleu.jpg', 'size-pbleu')">
+                      onclick="addToCartWithSize('Pantalon “Bleu”', PRICE_PANTALON, 'assets/pantalon-bleu.jpg', 'size-pbleu')">
                 <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
+        <!-- Pantalon gris (1) -->
         <div class="col-md-6 col-lg-4">
           <div class="p-card reveal" style="transition-delay:.06s">
             <img class="p-img" src="assets/pantalon-gris.jpg" alt="Pantalon Gris">
             <div class="p-body">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="tag"><i class="fa-solid fa-check"></i> Classic</span>
-                <span class="price">149 DH</span>
+                <span class="price"><span id="pP4"></span> DH</span>
               </div>
               <h5 class="mb-1">Pantalon “Gris”</h5>
               <div class="muted">Gris chiné • Style clean</div>
@@ -561,7 +569,67 @@
               </div>
 
               <button class="btn-mini" type="button"
-                      onclick="addToCartWithSize('Pantalon “Gris”', 149, 'assets/pantalon-gris.jpg', 'size-pgris')">
+                      onclick="addToCartWithSize('Pantalon “Gris”', PRICE_PANTALON, 'assets/pantalon-gris.jpg', 'size-pgris')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pantalon gris (2) - AJOUT -->
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal" style="transition-delay:.12s">
+            <img class="p-img" src="assets/pantalon-gris-2.jpg" alt="Pantalon Gris 2">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-layer-group"></i> New gris</span>
+                <span class="price"><span id="pP5"></span> DH</span>
+              </div>
+              <h5 class="mb-1">Pantalon “Gris” (Coupe large)</h5>
+              <div class="muted">Gris chiné • Coupe large • Confort premium</div>
+
+              <div class="size-row">
+                <label for="size-pgris2">Taille</label>
+                <select class="size-select" id="size-pgris2">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Pantalon “Gris” (Coupe large)', PRICE_PANTALON, 'assets/pantalon-gris-2.jpg', 'size-pgris2')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pantalon gris (3) - AJOUT -->
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal">
+            <img class="p-img" src="assets/pantalon-gris-3.jpg" alt="Pantalon Gris 3">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-circle-check"></i> Gris premium</span>
+                <span class="price"><span id="pP6"></span> DH</span>
+              </div>
+              <h5 class="mb-1">Pantalon “Gris” (Nike style)</h5>
+              <div class="muted">Gris • Détails premium • Streetwear</div>
+
+              <div class="size-row">
+                <label for="size-pgris3">Taille</label>
+                <select class="size-select" id="size-pgris3">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Pantalon “Gris” (Nike style)', PRICE_PANTALON, 'assets/pantalon-gris-3.jpg', 'size-pgris3')">
                 <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
               </button>
             </div>
@@ -569,12 +637,12 @@
         </div>
 
         <div class="col-md-6 col-lg-4">
-          <div class="p-card reveal" style="transition-delay:.12s">
+          <div class="p-card reveal" style="transition-delay:.06s">
             <img class="p-img" src="assets/pantalon-bleu-nuit.jpg" alt="Pantalon Bleu Nuit">
             <div class="p-body">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="tag"><i class="fa-solid fa-moon"></i> Bleu nuit</span>
-                <span class="price">149 DH</span>
+                <span class="price"><span id="pP7"></span> DH</span>
               </div>
               <h5 class="mb-1">Pantalon “Bleu Nuit”</h5>
               <div class="muted">Couleur premium • Confort</div>
@@ -590,16 +658,17 @@
               </div>
 
               <button class="btn-mini" type="button"
-                      onclick="addToCartWithSize('Pantalon “Bleu Nuit”', 149, 'assets/pantalon-bleu-nuit.jpg', 'size-pnuit')">
+                      onclick="addToCartWithSize('Pantalon “Bleu Nuit”', PRICE_PANTALON, 'assets/pantalon-bleu-nuit.jpg', 'size-pnuit')">
                 <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
+        <!-- PULLS -->
         <div class="col-12 mt-3">
           <div class="d-flex align-items-center justify-content-between">
-            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Pulls — 149 DH</h3>
+            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Pulls — <span id="pPu2"></span> DH</h3>
             <div class="muted reveal" style="transition-delay:.06s">Livraison gratuite</div>
           </div>
           <hr style="border-color: rgba(255,255,255,.10)" class="reveal">
@@ -611,7 +680,7 @@
             <div class="p-body">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <span class="tag"><i class="fa-solid fa-layer-group"></i> Dimension</span>
-                <span class="price">149 DH</span>
+                <span class="price"><span id="pPu3"></span> DH</span>
               </div>
               <h5 class="mb-1">Pull “Dimension”</h5>
               <div class="muted">Noir • Design rouge • Impression dos</div>
@@ -627,7 +696,103 @@
               </div>
 
               <button class="btn-mini" type="button"
-                      onclick="addToCartWithSize('Pull “Dimension”', 149, 'assets/dimen-tshirt.jpg', 'size-dimen')">
+                      onclick="addToCartWithSize('Pull “Dimension”', PRICE_PULL, 'assets/dimen-tshirt.jpg', 'size-dimen')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SURVETTES (AJOUT) -->
+        <div class="col-12 mt-3">
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="mb-0 reveal" style="font-family:Cinzel,serif;letter-spacing:.12em;text-transform:uppercase;">Survettes — <span id="pS2"></span> DH</h3>
+            <div class="muted reveal" style="transition-delay:.06s">Livraison gratuite</div>
+          </div>
+          <hr style="border-color: rgba(255,255,255,.10)" class="reveal">
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal">
+            <img class="p-img" src="assets/survette-femme-marron.jpg" alt="Survette femme marron">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-venus"></i> Femme</span>
+                <span class="price"><span id="pS3"></span> DH</span>
+              </div>
+              <h5 class="mb-1">Survette Femme “Marron”</h5>
+              <div class="muted">Ensemble complet • Style clean • Confort</div>
+
+              <div class="size-row">
+                <label for="size-smarron">Taille</label>
+                <select class="size-select" id="size-smarron">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Survette Femme “Marron”', PRICE_SURVETTE, 'assets/survette-femme-marron.jpg', 'size-smarron')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal" style="transition-delay:.06s">
+            <img class="p-img" src="assets/survette-femme-rose.jpg" alt="Survette femme rose">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-venus"></i> Femme</span>
+                <span class="price"><span id="pS4"></span> DH</span>
+              </div>
+              <h5 class="mb-1">Survette Femme “Rose”</h5>
+              <div class="muted">Ensemble complet • Hoodie long • Style premium</div>
+
+              <div class="size-row">
+                <label for="size-srose">Taille</label>
+                <select class="size-select" id="size-srose">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Survette Femme “Rose”', PRICE_SURVETTE, 'assets/survette-femme-rose.jpg', 'size-srose')">
+                <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="p-card reveal" style="transition-delay:.12s">
+            <img class="p-img" src="assets/ensemble-homme-jaune.jpg" alt="Ensemble homme jaune">
+            <div class="p-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="tag"><i class="fa-solid fa-mars"></i> Homme</span>
+                <span class="price"><span id="pS5"></span> DH</span>
+              </div>
+              <h5 class="mb-1">Ensemble Homme “Jaune”</h5>
+              <div class="muted">Ensemble complet • Streetwear • Confort</div>
+
+              <div class="size-row">
+                <label for="size-hjaune">Taille</label>
+                <select class="size-select" id="size-hjaune">
+                  <option value="S">S</option>
+                  <option value="M" selected>M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+
+              <button class="btn-mini" type="button"
+                      onclick="addToCartWithSize('Ensemble Homme “Jaune”', PRICE_SURVETTE, 'assets/ensemble-homme-jaune.jpg', 'size-hjaune')">
                 <i class="fa-solid fa-cart-plus"></i>Ajouter au panier
               </button>
             </div>
@@ -711,6 +876,13 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // inject prices in UI
+    const setText = (id, v)=>{ const el=document.getElementById(id); if(el) el.textContent = v; };
+    ["pH","pH2","pH3","pH4","pH5","pH6"].forEach(id=>setText(id, PRICE_HOODIE));
+    ["pP","pP2","pP3","pP4","pP5","pP6","pP7"].forEach(id=>setText(id, PRICE_PANTALON));
+    ["pPu","pPu2","pPu3"].forEach(id=>setText(id, PRICE_PULL));
+    ["pS","pS2","pS3","pS4","pS5"].forEach(id=>setText(id, PRICE_SURVETTE));
 
     const instaEls = ["instaLink","instaBtn2"].map(id=>document.getElementById(id));
     instaEls.forEach(el=>{
@@ -826,7 +998,7 @@
     }
 
     function esc(s){
-      return String(s).replace(/'/g, "\\'");
+      return String(s).replace(/'/g, "\'");
     }
 
     function renderCart(){
